@@ -20,7 +20,7 @@ jobs:
     #      - platform: x64
     #        qt-target: win64_msvc2019_64
           
-    runs-on: windows-2019
+    runs-on: windows-2016
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -47,25 +47,25 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ../Qt
-          key: Qt-5.15.2-QtCache
+          key: Qt-5.14.1-QtCache
 
       - name: Install Qt 64 bit
         uses: jurplel/install-qt-action@v2
         with:
-          version: '5.15.2'
+          version: '5.14.1'
           dir: ..
       #    arch:  ${{ matrix.qt-target }}
-          arch:  'win64_msvc2019_64' 
+          arch:  'win64_msvc2017_64' 
       #    tools: 'tools_qtcreator,4.14.0-0-202012170949,qt.tools.qtcreator'
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
 
       - name: Install Qt 32 bit
         uses: jurplel/install-qt-action@v2
         with:
-          version: '5.15.2'
+          version: '5.14.1'
           dir: ..
       #    arch:  ${{ matrix.qt-target }}
-          arch:  'win32_msvc2019'
+          arch:  'win32_msvc2017'
       #    tools: 'tools_qtcreator,4.14.0-0-202012170949,qt.tools.qtcreator'
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
     
